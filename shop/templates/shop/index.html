@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SHOP</title>
+    </head>
+    {% load static %}
+    
+    <link rel='stylesheet' href= "{% static 'shop/styles/screen.css' %}">
+    <body>
+        <h1>MY SHOP</h1>
+        {% for i in products %}
+        <p> {{i.name|upper}} : {{i.price}} </p>
+        {% endfor %}
+    </body>
+
+</html>

@@ -1,16 +1,70 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>SHOP</title>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Shop</title>
     {% load static %}
-    
-    <link rel='stylesheet' href= "{% static 'shop/styles/screen.css' %}">
-    <body>
-        <h1>MY SHOP</h1>
-        {% for i in products %}
-        <p> {{i.name|upper}} : {{i.price}} </p>
-        {% endfor %}
-    </body>
+    <link rel="stylesheet" href="{% static 'shop/styles/screen.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Shop Name</div>
+            <div class="nav-links">
+                <a href="{% url 'index' %}" class="nav-link">Home</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
 
+    <main class="main-content">
+        <section class="hero">
+            <h1>Welcome to Our Shop</h1>
+            <p>Discover amazing products at great prices</p>
+        </section>
+
+        <section class="products" id="products">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                {% for product in products %}
+                <article class="product-card">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                    {% endif %}
+                    <div class="product-info">
+                        <h3>{{ product.name }}</h3>
+                        <p class="price">${{ product.price }}</p>
+                        <button class="btn">Add to Cart</button>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@shop.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Shop Name. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
 </html>
